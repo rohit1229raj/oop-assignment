@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 using namespace std;
-// Function
 void function()
 {
     int n, i;
@@ -26,7 +25,6 @@ void function()
         printf("%d ", arr[i]);
     }
 }
-// Class Object
 class student
 {
 private:
@@ -51,8 +49,6 @@ public:
         cout << "Roll Number: " << roll;
     }
 };
-// Inheritance
-// Constructor & Destructor
 class Parent
 {
 public:
@@ -73,7 +69,6 @@ public:
         cout << "Inside sub class" << endl;
     }
 };
-// Polymorphism
 float area(int r)
 {
     float a;
@@ -93,13 +88,11 @@ float area(int n, int bs, int h)
     a2 = n * bs * h;
     return a2;
 }
-// Templatte
 template <typename T>
 T myMax(T x, T y)
 {
     return (x > y) ? x : y;
 }
-// Operator Overloading
 class Bank
 {
     int c;
@@ -122,7 +115,6 @@ public:
         c--;
     }
 };
-// Exception Handling
 double division(int a, int b)
 {
     if (b == 0)
