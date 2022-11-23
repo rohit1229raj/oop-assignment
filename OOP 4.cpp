@@ -1,102 +1,247 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <fstream>
 using namespace std;
-template<class T>class matrix
-  {
-	T m[10][10];
-	int row,col;
-     public:
-	matrix(int a ,int b)
-	{
-		row=a;col=b;
-	}
-	void accept();
-	void display();
-	matrix addition(matrix);
-	matrix sub(matrix);
-	matrix trans();
-	matrix mul(matrix);
-  };
+// Function
+void function()
+{
+    int n, i;
+    int arr[n];
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("After reversal: \n");
+    for (i = 0; i < n / 2; i++)
+    {
+        int temp;
+        temp = arr[i];
+        arr[i] = arr[n - i - 1];
+        arr[n - i - 1] = temp;
+    }
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+// Class Object
+class student
+{
+private:
+    string name;
+    int roll;
 
-template<class T>void matrix<T>::accept()
+public:
+    void getdata()
+    {
+        string ch;
+        int n;
+        cout << "Enter Name: ";
+        cin >> ch;
+        ch = name;
+        cout << "Enter Roll number: ";
+        cin >> n;
+        n = roll;
+    }
+    void display()
+    {
+        cout << "Name: " << name;
+        cout << "Roll Number: " << roll;
+    }
+};
+// Inheritance
+// Constructor & Destructor
+class Parent
 {
-	for(int i=0;i<row;i++)
-	   for(int j=0;j<col;j++)
-		cin>>m[i][j];
+public:
+    Parent()
+    {
+        cout << "Inside base class" << endl;
+    }
+    ~Parent()
+    {
+        cout << "Destructor evoked" << endl;
+    }
+};
+class Child : public Parent
+{
+public:
+    Child()
+    {
+        cout << "Inside sub class" << endl;
+    }
+};
+// Polymorphism
+float area(int r)
+{
+    float a;
+    float pi = 3.14;
+    a = pi * r * r;
+    return a;
 }
-template<class T>void matrix<T>::display()
+int area(int l, int b)
 {
-	for(int i=0;i<row;i++)
-	   {	cout<<"\n";
-		for(int j=0;j<col;j++)
-		   cout<<"\t"<<m[i][j];
-	   }
+    float a1;
+    a1 = l * b;
+    return a1;
 }
-template<class T>matrix<T> matrix<T>::addition(matrix<T> B)
+float area(int n, int bs, int h)
 {
-	matrix<T> C(row,col);
-	for(int i=0;i<row;i++)
-	   for(int j=0;j<col;j++)
-		C.m[i][j]=m[i][j]+B.m[i][j];
-	return C;
+    float a2;
+    a2 = n * bs * h;
+    return a2;
 }
-template<class T>matrix<T> matrix<T>::sub(matrix<T> B)
+// Templatte
+template <typename T>
+T myMax(T x, T y)
 {
-	matrix<T> C(row,col);
-	for(int i=0;i<row;i++)
-	   for(int j=0;j<col;j++)
-		C.m[i][j]=m[i][j]-B.m[i][j];
-	return C;
+    return (x > y) ? x : y;
 }
-template<class T>matrix<T> matrix<T>::trans()
+// Operator Overloading
+class Bank
 {
-	matrix<T> C(row,col);
-	for(int i=0;i<row;i++)
-	   for(int j=0;j<col;j++)
-		C.m[i][j]=m[j][i];
-	return C;
-}
-template<class T>matrix<T> matrix<T>::mul(matrix<T> B)
+    int c;
+
+public:
+    Bank()
+    {
+        c = 0;
+    }
+    Bank operator++(int)
+    {
+        c++;
+    }
+    int get_c()
+    {
+        return c;
+    }
+    Bank operator--(int)
+    {
+        c--;
+    }
+};
+// Exception Handling
+double division(int a, int b)
 {
-	matrix<T> C(row,col);
-	for(int i=0;i<row;i++)
-	{
-	   for(int j=0;j<col;j++)
-	   {
-		C.m[i][j]=0;
-              for(int k=0;k<row;k++)
-	         {
-		C.m[i][j]=C.m[i][j]+(m[i][k]*B.m[k][j]);
-	         }
-	   }
-	}
-	return C;
+    if (b == 0)
+    {
+        throw "Division by zero condition!";
+    }
+    return (a / b);
 }
 int main()
-   {
-	int r,c;
-	cout<<"\nEnter matrix Size(row&col): ";
-		cin>>r>>c;
-	cout<<"\nInteger Matrix";
-	matrix<int> A(r,c),B(r,c),C(r,c);
-      	cout<<"\nEnter matrix1 Elements";
-	A.accept();
-	cout<<"\nEnter matrix2 Elements";
-	B.accept();
-	cout<<"\nMatrix1 is: \n";
-		A.display();
-	cout<<"\nMatrix2 is: \n";
-		B.display();
-	C=A.addition(B);
-	cout<<"\nMatrix Addition is: \n";
-	C.display();
-		C=A.sub(B);
-	cout<<"\nMatrix subtraction is: \n";
-	C.display();
-		C=A.trans();
-	cout<<"\nMatrix transposition is: \n";
-	C.display();
-		C=A.mul(B);
-	cout<<"\nMatrix multiplication is: \n";
-	C.display();
-	
-   }
+{
+    int c, n;
+    do
+    {
+        cout << "1. Function\n";
+        cout << "2. Class & Object\n";
+        cout << "3. Inheritance + Constructor Destructor\n";
+        cout << "4. Polymorphism\n";
+        cout << "5. Template\n";
+        cout << "6. Opertor Overloading\n";
+        cout << "7. File Handling\n";
+        cout << "8. Exception Handling\n";
+        cout << "9. Exit\n";
+        cin >> n;
+        switch (n)
+        {
+        case 1:
+        {
+            function();
+            break;
+        }
+        case 2:
+        {
+            student st;
+            st.getdata();
+            st.display();
+            break;
+        }
+        case 3:
+        {
+            Parent P;
+            Child Ch;
+            break;
+        }
+        case 4:
+        {
+            int b, bs, h, r, l;
+            float are;
+            cout << "\nEnter the Radius of Circle: \n";
+            cin >> r;
+            are = area(r);
+            cout << "\nArea of Circle: " << are << endl;
+            cout << "Enter the Base & Hieght of Triangle:\n";
+            cin >> bs;
+            cin >> h;
+            are = area(0.5, b, h);
+            cout << "\nArea of Triangle: " << are << endl;
+            cout << "\nEnter the Length & Bredth of Rectangle: \n";
+            cin >> l >> b;
+            are = area(l, b);
+            cout << "\nArea of Rectangle: " << are << endl;
+            break;
+        }
+        case 5:
+        {
+            cout << myMax<int>(3, 7) << endl;
+            cout << myMax<double>(3.0, 7.0) << endl;
+            cout << myMax<char>('g', 'e') << endl;
+            break;
+        }
+        case 6:
+        {
+            Bank b;
+            cout << "Initial No Of People " << b.get_c() << endl;
+            b++;
+            b++;
+            b++;
+            cout << "Present No Of People " << b.get_c() << endl;
+            b--;
+            b--;
+            b--;
+            cout << "Present No Of People " << b.get_c() << endl;
+            break;
+        }
+        case 7:
+        {
+            ofstream MyFile("file.txt");
+            MyFile << "Hello, My name is Aditya Bhardwaj.";
+            string myText;
+            ifstream MyFileRead("file.txt");
+            while (getline(MyFileRead, myText))
+            {
+                cout << myText;
+            }
+            MyFile.close();
+            MyFileRead.close();
+            break;
+        }
+        case 8:
+        {
+            int x = 50;
+            int y = 0;
+            double z = 0;
+            try
+            {
+                z = division(x, y);
+                cout << z << endl;
+            }
+            catch (const char *msg)
+            {
+                cerr << msg << endl;
+            }
+            break;
+        }
+        case 9:
+        {
+            exit(0);
+            break;
+        }
+        }
+    } while (c != 9);
+    return 0;
+}
